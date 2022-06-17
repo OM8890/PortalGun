@@ -10,7 +10,7 @@ public class BulletScript : MonoBehaviour
     //Code
     void Update()
     {
-        transform.position += PortalScript.portal_gun.transform.forward * Time.deltaTime * bullet_speed;
+        transform.position += PortalGun.portal_gun.transform.forward * Time.deltaTime * bullet_speed;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -19,5 +19,7 @@ public class BulletScript : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        PortalGun.portal_count += 1;
+        GameObject portal_clone = Instantiate(PortalGun.portal_static, transform.position, Quaternion.identity);
     }
 }
